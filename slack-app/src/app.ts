@@ -14,6 +14,10 @@ app.command("/hello", async ({ ack, command, say }) => {
   await say(`${command.text}`);
 });
 
+app.event("reaction_added", async ({ event, say }) => {
+  await say(`:${event.reaction}:`);
+});
+
 // Serve slack app
 (async () => {
   await app.start();
